@@ -1,6 +1,10 @@
 import { extendTheme } from "@chakra-ui/react";
+import "@fontsource/inter/200.css";
 
 const theme = extendTheme({
+  fonts: {
+    body: `'Inter', sans-serif`,
+  },
   components: {
     Box: {
       variants: {
