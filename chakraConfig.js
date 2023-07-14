@@ -6,6 +6,22 @@ const theme = extendTheme({
     body: `'Inter', sans-serif`,
   },
   components: {
+    Flex: {
+      variants: {
+        "theme-1": {
+          bg: "red.500",
+          color: "white",
+        },
+        "theme-2": {
+          bg: "blue.500",
+          color: "white",
+        },
+        "theme-3": {
+          bg: "green.500",
+          color: "white",
+        },
+      },
+    },
     Box: {
       variants: {
         "theme-1": {
