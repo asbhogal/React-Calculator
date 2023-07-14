@@ -23,6 +23,14 @@ function reducer(state, { type, payload }) {
       if (state.currentOperand == null && state.previousOperand == null) {
         return state;
       }
+
+      if (state.currentOperand == null) {
+        return {
+          ...state,
+          operation: payload.operation,
+        };
+      }
+
       if (state.previousOperand == null) {
         return {
           ...state,
@@ -36,6 +44,20 @@ function reducer(state, { type, payload }) {
         previousOperand: evaluate(state),
         operation: payload.operation,
         currentOperand: null,
+      };
+    case ACTIONS.EVALUATE:
+      if (
+        state.operation == null ||
+        state.currentOperand == null ||
+        state.previousOperand == null
+      ) {
+        return state;
+      }
+      return {
+        ...state,
+        previousOperand: null,
+        operation: null,
+        currentOperand: evaluate(state),
       };
   }
 
@@ -115,7 +137,11 @@ function Calculator() {
           >
             RESET
           </Button>
-          <Button gridColumnStart={3} gridColumnEnd={5}>
+          <Button
+            onClick={() => dispatch({ type: ACTIONS.EVALUATE })}
+            gridColumnStart={3}
+            gridColumnEnd={5}
+          >
             =
           </Button>
         </SimpleGrid>
