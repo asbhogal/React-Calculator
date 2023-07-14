@@ -31,6 +31,17 @@ function reducer(state, { type, payload }) {
           currentOperand: null,
         };
       }
+      return {
+        ...state,
+        previousOperand: evaluate(state),
+        operation: payload.operation,
+        currentOperand: null,
+      };
+  }
+
+  function evaluate({ currentOperand, previousOperand, operation }) {
+    const prev = parseFloat(previousOperand);
+    const current = parseFloat(currentOperand);
   }
 }
 
@@ -51,19 +62,19 @@ function Calculator() {
       >
         <Flex
           flexDirection="column"
-          justifyContent="space-around"
+          justifyContent="space-between"
           alignItems="flex-end"
           h={90}
           w="100%"
           padding={15}
-          borderBottom="0.5px solid grey"
+          border="0.5px solid grey"
         >
           <Text fontSize={18}>
             {previousOperand} {operation}
           </Text>
           <Text fontSize={32}>{currentOperand}</Text>
         </Flex>
-        <SimpleGrid columns={4} spacing={2} w="250px">
+        <SimpleGrid columns={4} spacing={1} w="250px">
           <DigitButton digit="7" dispatch={dispatch} />
           <DigitButton digit="8" dispatch={dispatch} />
           <DigitButton digit="9" dispatch={dispatch} />

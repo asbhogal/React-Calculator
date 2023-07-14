@@ -20,8 +20,8 @@ const theme = extendTheme({
       },
     },
     Button: {
-      sizes: {
-        height: "40px",
+      baseStyle: {
+        borderRadius: "0", // Set the desired border radius
       },
       variants: {
         "theme-1": {
