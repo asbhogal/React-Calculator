@@ -6,6 +6,13 @@ import OperationButton from "./OperationButton";
 function reducer(state, { type, payload }) {
   switch (type) {
     case ACTIONS.ADD_DIGIT:
+      if (state.overwrite) {
+        return {
+          ...state,
+          currentOperand: payload.digit,
+          overwrite: false,
+        };
+      }
       if (payload.digit === "." && state.currentOperand == null) {
         return state;
       }
@@ -55,6 +62,7 @@ function reducer(state, { type, payload }) {
       }
       return {
         ...state,
+        overwrite: true,
         previousOperand: null,
         operation: null,
         currentOperand: evaluate(state),
