@@ -10,6 +10,7 @@ OperationButton.propTypes = {
 export default function OperationButton({ dispatch, operation }) {
   return (
     <Button
+      variant="theme-1"
       height="40px"
       onClick={() =>
         dispatch({ type: ACTIONS.CHOOSE_OPERATION, payload: { operation } })

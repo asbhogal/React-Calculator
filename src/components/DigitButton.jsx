@@ -9,6 +9,7 @@ DigitButton.propTypes = {
 export default function DigitButton({ dispatch, digit }) {
   return (
     <Button
+      variant="theme-1"
       onClick={() => dispatch({ type: ACTIONS.ADD_DIGIT, payload: { digit } })}
     >
       {digit}

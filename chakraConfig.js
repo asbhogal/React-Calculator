@@ -9,7 +9,7 @@ const theme = extendTheme({
     Flex: {
       variants: {
         "theme-1": {
-          bg: "red.500",
+          bg: "#000",
           color: "white",
         },
         "theme-2": {
@@ -25,7 +25,8 @@ const theme = extendTheme({
     Box: {
       variants: {
         "theme-1": {
-          bg: "#3b4664",
+          bg: "#000000",
+          color: "#000",
         },
         "theme-2": {
           bg: "#e6e6e6",
@@ -37,11 +38,13 @@ const theme = extendTheme({
     },
     Button: {
       baseStyle: {
-        borderRadius: "0", // Set the desired border radius
+        borderRadius: "0",
+        padding: "30px 0",
       },
       variants: {
         "theme-1": {
-          bg: "#eae3db",
+          bg: "#323232",
+          color: "#f0f0f0",
         },
         "theme-2": {
           bg: "#e5e4e0",
@@ -57,7 +60,7 @@ const theme = extendTheme({
       body: {
         variants: {
           "theme-1": {
-            bg: "#3b4664",
+            bg: "#000000",
           },
           "theme-2": {
             bg: "#e6e6e6",
