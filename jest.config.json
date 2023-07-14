@@ -1,0 +1,5 @@
+{
+  "testEnvironment": "jsdom",
+  "moduleNameMapper": { "\\.(css)$": "identity-obj-proxy" },
+  "moduleFileExtensions": ["js", "jsx", "json", "node"]
+}
