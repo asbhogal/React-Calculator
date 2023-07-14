@@ -1,5 +1,5 @@
 import { Button, Text, Flex, SimpleGrid } from "@chakra-ui/react";
-import { useReducer } from "react";
+import { useReducer, useRef } from "react";
 import { ACTIONS } from "../constants/Actions";
 import DigitButton from "./DigitButton";
 import OperationButton from "./OperationButton";
@@ -111,11 +111,43 @@ function reducer(state, { type, payload }) {
   }
 }
 
+const INTEGER_FORMATTER = new Intl.NumberFormat("en-us", {
+  maximumFractionDigits: 0,
+});
+
+function formatOperand(operand) {
+  if (operand == null) return;
+  const [integer, decimal] = operand.split(".");
+  if (decimal == null) return INTEGER_FORMATTER.format(integer);
+  return `${INTEGER_FORMATTER.format(integer)}.${decimal}`;
+}
+
 function Calculator() {
   const [{ currentOperand, previousOperand, operation }, dispatch] = useReducer(
     reducer,
     {}
   );
+
+  const currentOperandRef = useRef(null);
+
+  // Calculate the scale factor based on the length of the current operand
+  const calculateScale = () => {
+    if (currentOperandRef.current) {
+      const containerWidth = currentOperandRef.current.offsetWidth;
+      const textWidth = currentOperandRef.current.scrollWidth;
+      const buffer = 10;
+      const scale = (containerWidth - buffer) / textWidth;
+      return scale;
+    }
+    return 1;
+  };
+
+  // Calculate the scale factor initially and whenever the currentOperand changes
+  const scale = calculateScale();
+
+  // Calculate the transform origin based on the scale
+  const transformOrigin = scale === 1 ? "right" : "left";
+
   // dispatch({ type: ACTIONS.ADD_DIGIT, payload: { digit: 1 } });
   return (
     <Flex justifyContent="center" variant="theme-3" h="100vh">
@@ -123,22 +155,32 @@ function Calculator() {
         flexDirection="column"
         justifyContent="center"
         gap={25}
-        maxW={300}
+        maxW={250}
         variant="theme-3"
       >
         <Flex
           flexDirection="column"
           justifyContent="space-between"
           alignItems="flex-end"
-          h={90}
+          overflow="auto"
+          h={85}
           w="100%"
-          padding={15}
           border="0.5px solid grey"
         >
           <Text fontSize={18}>
-            {previousOperand} {operation}
+            {formatOperand(previousOperand)} {operation}
           </Text>
-          <Text fontSize={32}>{currentOperand}</Text>
+          <Text
+            textAlign="right"
+            w={250}
+            whiteSpace="nowrap"
+            fontSize={32}
+            ref={currentOperandRef}
+            transform={`scale(${scale})`} // Apply the scale transform
+            transformOrigin={transformOrigin}
+          >
+            {formatOperand(currentOperand)}
+          </Text>
         </Flex>
         <SimpleGrid columns={4} spacing={1} w="250px">
           <DigitButton digit="7" dispatch={dispatch} />
