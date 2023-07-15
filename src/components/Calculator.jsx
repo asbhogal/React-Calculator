@@ -1,4 +1,9 @@
 import { Box, Button, Text, Flex, SimpleGrid } from "@chakra-ui/react";
+import {
+  FlexWithVariant,
+  BoxWithVariant,
+  TextWithVariant,
+} from "./customComponents";
 import { useReducer, useRef } from "react";
 import { ACTIONS } from "../constants/Actions";
 import DigitButton from "./DigitButton";
@@ -30,14 +35,14 @@ function Calculator() {
   const transformOrigin = scale === 1 ? "right" : "left";
 
   return (
-    <Box variant="theme-1">
-      <Flex justifyContent="center" variant="theme-1" h="100vh">
-        <Flex
+    <BoxWithVariant variant="theme-1">
+      <FlexWithVariant variant="theme-1" justifyContent="center" h="100vh">
+        <FlexWithVariant
           flexDirection="column"
           justifyContent="center"
           gap="10px"
           maxW={250}
-          variant="theme-3"
+          variant="theme-1"
         >
           <Flex
             flexDirection="column"
@@ -48,10 +53,11 @@ function Calculator() {
             w="100%"
             border="0.5px solid grey"
           >
-            <Text fontSize={18}>
+            <TextWithVariant variant="theme-1" fontSize={18}>
               {formatOperand(previousOperand)} {operation}
-            </Text>
-            <Text
+            </TextWithVariant>
+            <TextWithVariant
+              variant="theme-1"
               textAlign="right"
               w={250}
               whiteSpace="nowrap"
@@ -61,7 +67,7 @@ function Calculator() {
               transformOrigin={transformOrigin}
             >
               {formatOperand(currentOperand)}
-            </Text>
+            </TextWithVariant>
           </Flex>
           <SimpleGrid columns={4} spacing={1} w="250px">
             <DigitButton digit="7" dispatch={dispatch} />
@@ -102,9 +108,9 @@ function Calculator() {
               =
             </Button>
           </SimpleGrid>
-        </Flex>
-      </Flex>
-    </Box>
+        </FlexWithVariant>
+      </FlexWithVariant>
+    </BoxWithVariant>
   );
 }
 

@@ -1,4 +1,5 @@
 import { extendTheme } from "@chakra-ui/react";
+
 import "@fontsource/inter/200.css";
 
 const theme = extendTheme({
@@ -13,7 +14,7 @@ const theme = extendTheme({
           color: "white",
         },
         "theme-2": {
-          bg: "blue.500",
+          bg: "blue",
           color: "white",
         },
         "theme-3": {
