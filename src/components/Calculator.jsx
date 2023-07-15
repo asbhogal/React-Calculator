@@ -10,6 +10,7 @@ import DigitButton from "./DigitButton";
 import OperationButton from "./OperationButton";
 import reducer from "../functions/reducer";
 import formatOperand from "../functions/formatOperand";
+import ThemeToggle from "./ThemeToggle";
 
 function Calculator() {
   const [{ currentOperand, previousOperand, operation }, dispatch] = useReducer(
@@ -39,9 +40,15 @@ function Calculator() {
       <FlexWithVariant
         variant="theme-1"
         display="flex"
+        flexDirection="column"
         justifyContent="center"
+        alignItems="flex-end"
+        gap="15px"
+        margin="0 auto"
+        w="max-content"
         h="100vh"
       >
+        <ThemeToggle />
         <FlexWithVariant
           display="flex"
           flexDirection="column"
