@@ -56,7 +56,7 @@ const theme = extendTheme({
       },
     },
   },
-  styles: {
+  /* styles: {
     global: {
       body: {
         variants: {
@@ -72,7 +72,7 @@ const theme = extendTheme({
         },
       },
     },
-  },
+  }, */
 });
 
 export default theme;

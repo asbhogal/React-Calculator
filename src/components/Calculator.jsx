@@ -1,4 +1,4 @@
-import { Box, Button, Text, Flex, SimpleGrid } from "@chakra-ui/react";
+import { Button, Flex, SimpleGrid } from "@chakra-ui/react";
 import {
   FlexWithVariant,
   BoxWithVariant,
@@ -36,8 +36,14 @@ function Calculator() {
 
   return (
     <BoxWithVariant variant="theme-1">
-      <FlexWithVariant variant="theme-1" justifyContent="center" h="100vh">
+      <FlexWithVariant
+        variant="theme-1"
+        display="flex"
+        justifyContent="center"
+        h="100vh"
+      >
         <FlexWithVariant
+          display="flex"
           flexDirection="column"
           justifyContent="center"
           gap="10px"
@@ -45,6 +51,7 @@ function Calculator() {
           variant="theme-1"
         >
           <Flex
+            display="flex"
             flexDirection="column"
             justifyContent="space-between"
             alignItems="flex-end"

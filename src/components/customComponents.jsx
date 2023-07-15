@@ -1,3 +1,4 @@
+import React from "react";
 import { useStyleConfig, Box, Button, Flex, Text } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 
@@ -16,10 +17,12 @@ export const FlexWithVariant = ({ variant, ...props }) => {
   return <Flex __css={styles} {...props} />;
 };
 
-export const TextWithVariant = ({ variant, ...props }) => {
-  const styles = useStyleConfig("Text", { variant });
-  return <Text __css={styles} {...props} />;
-};
+export const TextWithVariant = React.forwardRef(
+  ({ variant, ...props }, ref) => {
+    const styles = useStyleConfig("Text", { variant });
+    return <Text ref={ref} __css={styles} {...props} />;
+  }
+);
 
 BoxWithVariant.propTypes = {
   variant: PropTypes.string.isRequired,
@@ -36,3 +39,5 @@ FlexWithVariant.propTypes = {
 TextWithVariant.propTypes = {
   variant: PropTypes.string.isRequired,
 };
+
+TextWithVariant.displayName = "TextWithVariant";
