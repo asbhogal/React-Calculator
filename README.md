@@ -1,7 +1,7 @@
 <div align="center">
 <h1>React Calculator</h1>
 
-![GitHub deployments](https://img.shields.io/github/deployments/asbhogal/TypeScript-Shopping-Cart/production?label=DEPLOYMENT%20STATE&style=for-the-badge&labelColor=000) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/asbhogal/TypeScript-Shopping-Cart?style=for-the-badge&labelColor=000) ![GitHub repo size](https://img.shields.io/github/repo-size/asbhogal/TypeScript-Shopping-Cart?color=blueviolet&style=for-the-badge&labelColor=000)
+![GitHub deployments](https://img.shields.io/github/deployments/asbhogal/React-Calculator/production?label=DEPLOYMENT%20STATE&style=for-the-badge&labelColor=000) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/asbhogal/React-Calculator?style=for-the-badge&labelColor=000) ![GitHub repo size](https://img.shields.io/github/repo-size/asbhogal/React-Calculator?color=blueviolet&style=for-the-badge&labelColor=000)
 
 </div>
 
