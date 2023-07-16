@@ -39,7 +39,7 @@ export default function ThemeToggle() {
         THEME
       </Text>
       <Flex flexDirection="column" gap={1}>
-        <Flex justifyContent="space-around">
+        <Flex justifyContent="space-between">
           <Text fontSize={12} fontWeight={500}>
             1
           </Text>

@@ -4,7 +4,7 @@ import {
   BoxWithVariant,
   TextWithVariant,
 } from "./customComponents";
-import { useReducer, useRef } from "react";
+import { useEffect, useReducer, useRef } from "react";
 import { ACTIONS } from "../constants/Actions";
 import DigitButton from "./DigitButton";
 import OperationButton from "./OperationButton";
@@ -19,6 +19,20 @@ function Calculator() {
   );
 
   const currentOperandRef = useRef(null);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      const { key } = event;
+      if (/[0-9]/.test(key)) {
+        dispatch({ type: ACTIONS.ADD_DIGIT, payload: key });
+      }
+      console.log(key);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   const calculateScale = () => {
     if (currentOperandRef.current) {
