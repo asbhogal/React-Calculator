@@ -1,6 +1,6 @@
-import React from "react";
 import { useStyleConfig, Box, Button, Flex, Text } from "@chakra-ui/react";
 import PropTypes from "prop-types";
+import React from "react";
 
 export const BoxWithVariant = ({ variant, ...props }) => {
   const styles = useStyleConfig("Box", { variant });
@@ -20,7 +20,17 @@ export const FlexWithVariant = ({ variant, ...props }) => {
 export const TextWithVariant = React.forwardRef(
   ({ variant, ...props }, ref) => {
     const styles = useStyleConfig("Text", { variant });
-    return <Text ref={ref} __css={styles} {...props} />;
+
+    const { transform, ...restStyles } = styles;
+
+    const scaledStyles = {
+      ...restStyles,
+      transform: `${transform || ""} ${
+        props.scale ? `scale(${props.scale})` : ""
+      }`,
+    };
+
+    return <Text ref={ref} sx={scaledStyles} {...props} />;
   }
 );
 
@@ -38,6 +48,7 @@ FlexWithVariant.propTypes = {
 
 TextWithVariant.propTypes = {
   variant: PropTypes.string.isRequired,
+  scale: PropTypes.number,
 };
 
 TextWithVariant.displayName = "TextWithVariant";

@@ -1,5 +1,6 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { useState } from "react";
+import { FlexWithVariant } from "./customComponents";
 
 export default function ThemeToggle() {
   const [activeStep, setActiveStep] = useState(1);
@@ -50,7 +51,7 @@ export default function ThemeToggle() {
             3
           </Text>
         </Flex>
-        <Box style={switchStyles}>
+        <FlexWithVariant variant="theme-1" style={switchStyles}>
           <Box
             onClick={() => handleStepChange(1)}
             style={{
@@ -72,7 +73,7 @@ export default function ThemeToggle() {
               ...(activeStep === 3 && activeStepStyles),
             }}
           ></Box>
-        </Box>
+        </FlexWithVariant>
       </Flex>
     </Flex>
   );

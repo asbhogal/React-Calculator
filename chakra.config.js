@@ -13,12 +13,12 @@ const theme = extendTheme({
     Flex: {
       variants: {
         "theme-1": {
-          bg: "#000",
+          bg: "#000000",
           color: "white",
         },
         "theme-2": {
-          bg: "blue",
-          color: "white",
+          bg: "#e6e6e6",
+          color: "#111111",
         },
         "theme-3": {
           bg: "green.500",
@@ -51,10 +51,23 @@ const theme = extendTheme({
           color: "#f0f0f0",
         },
         "theme-2": {
-          bg: "#e5e4e0",
+          bg: "red",
         },
         "theme-3": {
           bg: "#331b4d",
+        },
+      },
+    },
+    Text: {
+      variants: {
+        "theme-1": {
+          color: "#000000",
+        },
+        "theme-2": {
+          color: "#e6e6e6",
+        },
+        "theme-3": {
+          color: "#17062a",
         },
       },
     },

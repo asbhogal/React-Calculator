@@ -65,8 +65,7 @@ function Calculator() {
     if (currentOperandRef.current) {
       const containerWidth = currentOperandRef.current.offsetWidth;
       const textWidth = currentOperandRef.current.scrollWidth;
-      const buffer = 10;
-      const scale = (containerWidth - buffer) / textWidth;
+      const scale = containerWidth / textWidth;
       return scale;
     }
     return 1;
@@ -77,9 +76,9 @@ function Calculator() {
   const transformOrigin = scale === 1 ? "right" : "left";
 
   return (
-    <BoxWithVariant variant="theme-1">
+    <BoxWithVariant variant="theme-2">
       <FlexWithVariant
-        variant="theme-1"
+        variant="theme-2"
         display="flex"
         flexDirection="column"
         justifyContent="center"
@@ -91,12 +90,12 @@ function Calculator() {
       >
         <ThemeToggle />
         <FlexWithVariant
+          variant="theme-2"
           display="flex"
           flexDirection="column"
           justifyContent="center"
           gap="10px"
           maxW={250}
-          variant="theme-1"
         >
           <Flex
             backgroundColor="#111111"
@@ -108,12 +107,20 @@ function Calculator() {
             h={85}
             w="100%"
           >
-            <TextWithVariant variant="theme-1" fontSize={18}>
+            <TextWithVariant
+              variant="theme-2"
+              position="relative"
+              right="2%"
+              fontSize={18}
+            >
               {formatOperand(previousOperand)} {operation}
             </TextWithVariant>
             <TextWithVariant
-              variant="theme-1"
+              variant="theme-2"
+              scale={scale}
               textAlign="right"
+              position="relative"
+              right="2%"
               w={250}
               whiteSpace="nowrap"
               fontSize={32}
