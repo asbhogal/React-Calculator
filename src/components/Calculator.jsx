@@ -150,6 +150,8 @@ function Calculator() {
             <DigitButton digit="8" dispatch={dispatch} __css={buttonStyles} />
             <DigitButton digit="9" dispatch={dispatch} __css={buttonStyles} />
             <Button
+              display="flex"
+              alignItems="center"
               variant={`theme-${activeStep}`}
               onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT })}
               __css={buttonStyles}
@@ -185,6 +187,9 @@ function Calculator() {
               __css={buttonStyles}
             />
             <Button
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
               variant={`theme-${activeStep}`}
               gridColumnStart={1}
               gridColumnEnd={3}
@@ -194,6 +199,9 @@ function Calculator() {
               RESET
             </Button>
             <Button
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
               variant={`theme-${activeStep}`}
               onClick={() => dispatch({ type: ACTIONS.EVALUATE })}
               gridColumnStart={3}

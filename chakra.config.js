@@ -62,7 +62,7 @@ const theme = extendTheme({
     Text: {
       variants: {
         "theme-1": {
-          color: "#000000",
+          color: "#e6e6e6",
         },
         "theme-2": {
           color: "#e6e6e6",
