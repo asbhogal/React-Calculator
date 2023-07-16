@@ -58,6 +58,7 @@ function Calculator() {
           variant="theme-1"
         >
           <Flex
+            backgroundColor="#111111"
             display="flex"
             flexDirection="column"
             justifyContent="space-between"
@@ -65,7 +66,6 @@ function Calculator() {
             overflow="auto"
             h={85}
             w="100%"
-            border="0.5px solid grey"
           >
             <TextWithVariant variant="theme-1" fontSize={18}>
               {formatOperand(previousOperand)} {operation}
