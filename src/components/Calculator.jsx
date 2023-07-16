@@ -15,7 +15,7 @@ import ThemeToggle from "./ThemeToggle";
 function Calculator() {
   const [{ currentOperand, previousOperand, operation }, dispatch] = useReducer(
     reducer,
-    {}
+    { currentOperand: "0" }
   );
 
   const currentOperandRef = useRef(null);
@@ -23,10 +23,37 @@ function Calculator() {
   useEffect(() => {
     const handleKeyDown = (event) => {
       const { key } = event;
-      if (/[0-9]/.test(key)) {
-        dispatch({ type: ACTIONS.ADD_DIGIT, payload: key });
+      if (/\d/.test(key)) {
+        dispatch({ type: ACTIONS.ADD_DIGIT, payload: { digit: key } });
+      } else if (key === ".") {
+        dispatch({ type: ACTIONS.ADD_DIGIT, payload: { digit: key } });
+      } else if (key === "+") {
+        dispatch({
+          type: ACTIONS.CHOOSE_OPERATION,
+          payload: { operation: "+" },
+        });
+      } else if (key === "-") {
+        dispatch({
+          type: ACTIONS.CHOOSE_OPERATION,
+          payload: { operation: "-" },
+        });
+      } else if (key === "*") {
+        dispatch({
+          type: ACTIONS.CHOOSE_OPERATION,
+          payload: { operation: "*" },
+        });
+      } else if (key === "/") {
+        dispatch({
+          type: ACTIONS.CHOOSE_OPERATION,
+          payload: { operation: "÷" },
+        });
+      } else if (key === "Enter" || key === "=") {
+        dispatch({ type: ACTIONS.EVALUATE });
+      } else if (key === "Backspace") {
+        dispatch({ type: ACTIONS.DELETE_DIGIT });
+      } else if (key === "Delete") {
+        dispatch({ type: ACTIONS.CLEAR });
       }
-      console.log(key);
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => {
