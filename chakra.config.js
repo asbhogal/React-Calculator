@@ -51,7 +51,8 @@ const theme = extendTheme({
           color: "#f0f0f0",
         },
         "theme-2": {
-          bg: "red",
+          bg: "#333",
+          color: "#e6e6e6",
         },
         "theme-3": {
           bg: "#331b4d",

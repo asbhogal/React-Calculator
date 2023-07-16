@@ -10,7 +10,7 @@ export default function DigitButton({ dispatch, digit }) {
   return (
     <Button
       fontWeight={400}
-      variant="theme-1"
+      variant="theme-2"
       onClick={() => dispatch({ type: ACTIONS.ADD_DIGIT, payload: { digit } })}
     >
       {digit}

@@ -1,10 +1,12 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
-import { useState } from "react";
-import { FlexWithVariant } from "./customComponents";
+import PropTypes from "prop-types";
 
-export default function ThemeToggle() {
-  const [activeStep, setActiveStep] = useState(1);
+ThemeToggle.propTypes = {
+  activeStep: PropTypes.number.isRequired,
+  setActiveStep: PropTypes.func.isRequired,
+};
 
+export default function ThemeToggle({ activeStep, setActiveStep }) {
   const handleStepChange = (step) => {
     setActiveStep(step);
   };
@@ -34,6 +36,7 @@ export default function ThemeToggle() {
     }px)`,
     transition: "transform 0.3s",
   };
+
   return (
     <Flex alignItems="flex-end" gap={3}>
       <Text fontSize={12} fontWeight={700} letterSpacing={1.1} lineHeight={1}>
@@ -51,7 +54,55 @@ export default function ThemeToggle() {
             3
           </Text>
         </Flex>
-        <FlexWithVariant variant="theme-1" style={switchStyles}>
+
+        <Flex style={switchStyles}>
+          <Box
+            variant={`theme-${activeStep}`}
+            style={{
+              ...stepStyles,
+              ...(activeStep === 1 && activeStepStyles),
+            }}
+            onClick={() => {
+              handleStepChange(1);
+            }}
+          />
+          <Box
+            variant={`theme-${activeStep}`}
+            style={{
+              ...stepStyles,
+              ...(activeStep === 2 && activeStepStyles),
+            }}
+            onClick={() => {
+              handleStepChange(2);
+            }}
+          />
+          <Box
+            variant={`theme-${activeStep}`}
+            style={{
+              ...stepStyles,
+              ...(activeStep === 3 && activeStepStyles),
+            }}
+            onClick={() => {
+              handleStepChange(3);
+            }}
+          />
+        </Flex>
+
+        {/* <FlexWithVariant variant={`theme-${activeStep}`} style={switchStyles}>
+          {variants.map((variant, index) => (
+            <Box
+              variant={variants[activeStep - 1]}
+              key={index}
+              onClick={() => handleStepChange(index + 1)}
+              style={{
+                ...stepStyles,
+                ...(activeStep === index + 1 && activeStepStyles),
+              }}
+            ></Box>
+          ))}
+        </FlexWithVariant> */}
+
+        {/* <FlexWithVariant variant="theme-1" style={switchStyles}>
           <Box
             onClick={() => handleStepChange(1)}
             style={{
@@ -73,7 +124,7 @@ export default function ThemeToggle() {
               ...(activeStep === 3 && activeStepStyles),
             }}
           ></Box>
-        </FlexWithVariant>
+        </FlexWithVariant> */}
       </Flex>
     </Flex>
   );
