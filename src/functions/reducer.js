@@ -22,7 +22,7 @@ export default function reducer(state, { type, payload }) {
         currentOperand: `${state.currentOperand || ""}${payload.digit}`,
       };
     case ACTIONS.CLEAR:
-      return {};
+      return { currentOperand: "0" };
     case ACTIONS.CHOOSE_OPERATION:
       if (state.currentOperand == null && state.previousOperand == null) {
         return state;
@@ -61,7 +61,7 @@ export default function reducer(state, { type, payload }) {
       if (state.currentOperand.length === 1) {
         return {
           ...state,
-          currentOperand: null,
+          currentOperand: "0",
         };
       }
       return {

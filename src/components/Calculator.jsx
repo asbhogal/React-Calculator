@@ -116,7 +116,7 @@ function Calculator() {
             justifyContent="space-between"
             alignItems="flex-end"
             overflow="auto"
-            h={85}
+            h={75}
             w="100%"
           >
             <TextWithVariant
