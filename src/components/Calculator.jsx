@@ -82,9 +82,12 @@ function Calculator() {
   }; */
 
   /*   const boxStyles = useStyleConfig("Box", { variant: `theme-${activeStep}` });
-   */ const buttonStyles = useStyleConfig("Button", {
+   */
+
+  const buttonStyles = useStyleConfig("Button", {
     variant: `theme-${activeStep}`,
   });
+
   const textStyles = useStyleConfig("Text", { variant: `theme-${activeStep}` });
 
   return (
@@ -124,7 +127,7 @@ function Calculator() {
               position="relative"
               right="2%"
               fontSize={18}
-              __css={textStyles}
+              buttonStyles={textStyles}
             >
               {formatOperand(previousOperand)} {operation}
             </TextWithVariant>
@@ -140,51 +143,95 @@ function Calculator() {
               ref={currentOperandRef}
               transform={`scale(${scale})`}
               transformOrigin={transformOrigin}
-              __css={textStyles}
+              buttonStyles={textStyles}
             >
               {formatOperand(currentOperand)}
             </TextWithVariant>
           </Flex>
-          <SimpleGrid columns={4} spacing={1} w="250px">
-            <DigitButton digit="7" dispatch={dispatch} __css={buttonStyles} />
-            <DigitButton digit="8" dispatch={dispatch} __css={buttonStyles} />
-            <DigitButton digit="9" dispatch={dispatch} __css={buttonStyles} />
+          <SimpleGrid columns={4} w="250px">
+            <DigitButton
+              digit="7"
+              dispatch={dispatch}
+              buttonStyles={buttonStyles}
+            />
+            <DigitButton
+              digit="8"
+              dispatch={dispatch}
+              buttonStyles={buttonStyles}
+            />
+            <DigitButton
+              digit="9"
+              dispatch={dispatch}
+              buttonStyles={buttonStyles}
+            />
             <Button
               display="flex"
               alignItems="center"
               variant={`theme-${activeStep}`}
               onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT })}
-              __css={buttonStyles}
+              buttonStyles={buttonStyles}
             >
               DEL
             </Button>
-            <DigitButton digit="4" dispatch={dispatch} __css={buttonStyles} />
-            <DigitButton digit="5" dispatch={dispatch} __css={buttonStyles} />
-            <DigitButton digit="6" dispatch={dispatch} __css={buttonStyles} />
+            <DigitButton
+              digit="4"
+              dispatch={dispatch}
+              buttonStyles={buttonStyles}
+            />
+            <DigitButton
+              digit="5"
+              dispatch={dispatch}
+              buttonStyles={buttonStyles}
+            />
+            <DigitButton
+              digit="6"
+              dispatch={dispatch}
+              buttonStyles={buttonStyles}
+            />
             <OperationButton
               operation="+"
               dispatch={dispatch}
-              __css={buttonStyles}
+              buttonStyles={buttonStyles}
             />
-            <DigitButton digit="1" dispatch={dispatch} __css={buttonStyles} />
-            <DigitButton digit="2" dispatch={dispatch} __css={buttonStyles} />
-            <DigitButton digit="3" dispatch={dispatch} __css={buttonStyles} />
+            <DigitButton
+              digit="1"
+              dispatch={dispatch}
+              buttonStyles={buttonStyles}
+            />
+            <DigitButton
+              digit="2"
+              dispatch={dispatch}
+              buttonStyles={buttonStyles}
+            />
+            <DigitButton
+              digit="3"
+              dispatch={dispatch}
+              buttonStyles={buttonStyles}
+            />
             <OperationButton
               operation="-"
               dispatch={dispatch}
-              __css={buttonStyles}
+              buttonStyles={buttonStyles}
             />
-            <DigitButton digit="." dispatch={dispatch} __css={buttonStyles} />
-            <DigitButton digit="0" dispatch={dispatch} __css={buttonStyles} />
+            <DigitButton
+              digit="."
+              dispatch={dispatch}
+              buttonStyles={buttonStyles}
+            />
+            <DigitButton
+              digit="0"
+              dispatch={dispatch}
+              buttonStyles={buttonStyles}
+            />
             <OperationButton
               operation="÷"
               dispatch={dispatch}
-              __css={buttonStyles}
+              buttonStyles={buttonStyles}
             />
             <OperationButton
               operation="*"
               dispatch={dispatch}
-              __css={buttonStyles}
+              buttonStyles={buttonStyles}
             />
             <Button
               display="flex"
@@ -194,7 +241,7 @@ function Calculator() {
               gridColumnStart={1}
               gridColumnEnd={3}
               onClick={() => dispatch({ type: ACTIONS.CLEAR })}
-              __css={buttonStyles}
+              buttonStyles={buttonStyles}
             >
               RESET
             </Button>
@@ -206,7 +253,7 @@ function Calculator() {
               onClick={() => dispatch({ type: ACTIONS.EVALUATE })}
               gridColumnStart={3}
               gridColumnEnd={5}
-              __css={buttonStyles}
+              buttonStyles={buttonStyles}
             >
               =
             </Button>

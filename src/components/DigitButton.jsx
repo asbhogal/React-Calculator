@@ -5,13 +5,16 @@ import PropTypes from "prop-types";
 DigitButton.propTypes = {
   digit: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
+  buttonStyles: PropTypes.object.isRequired,
 };
-export default function DigitButton({ dispatch, digit }) {
+
+export default function DigitButton({ dispatch, digit, buttonStyles }) {
   return (
     <Button
+      variant={`theme-${buttonStyles.variant}`}
       fontWeight={400}
-      variant="theme-2"
       onClick={() => dispatch({ type: ACTIONS.ADD_DIGIT, payload: { digit } })}
+      __css={buttonStyles}
     >
       {digit}
     </Button>
