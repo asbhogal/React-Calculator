@@ -54,7 +54,7 @@ export default function reducer(state, { type, payload }) {
         return {
           ...state,
           overwrite: false,
-          currentOperand: null,
+          currentOperand: "0",
         };
       }
       if (state.currentOperand == null) return state;
