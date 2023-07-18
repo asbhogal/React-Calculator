@@ -71,7 +71,7 @@ function Calculator() {
     };
 
     const handleChangeTheme = (event) => {
-      setActiveStep(event.matches ? 2 : 1);
+      setActiveStep(event.matches ? 1 : 2);
     };
 
     handleChangeTheme(prefersDarkMode);
