@@ -165,7 +165,7 @@ function Calculator() {
             justifyContent="space-between"
             alignItems="flex-end"
             overflow="auto"
-            h={75}
+            h={85}
             w="100%"
           >
             <TextWithVariant
@@ -173,7 +173,7 @@ function Calculator() {
               position="relative"
               right="2%"
               fontSize={18}
-              sx={textStyles}
+              sx={{ ...textStyles, height: "27px", overflow: "hidden" }}
             >
               {formatOperand(previousOperand)} {operation}
             </TextWithVariant>

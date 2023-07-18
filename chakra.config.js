@@ -1,4 +1,5 @@
 import { extendTheme } from "@chakra-ui/react";
+import { mode } from "@chakra-ui/theme-tools";
 
 import "@fontsource/inter/200.css";
 import "@fontsource/inter/400.css";
@@ -86,23 +87,27 @@ const theme = extendTheme({
       },
     },
   },
-  /* styles: {
-    global: {
+  styles: {
+    global: (props) => ({
       body: {
-        variants: {
-          "theme-1": {
-            bg: "#000000",
-          },
-          "theme-2": {
-            bg: "#e6e6e6",
-          },
-          "theme-3": {
-            bg: "#17062a",
-          },
-        },
+        bg: mode("#000000", "#e6e6e6")(props),
       },
-    },
-  }, */
+      "::-webkit-scrollbar": {
+        width: "0.1em",
+        backgroundColor: "transparent",
+      },
+      "::-webkit-scrollbar-track": {
+        backgroundColor: "transparent",
+      },
+      "::-webkit-scrollbar-thumb": {
+        backgroundColor: mode("#dddddd")(props),
+        borderRadius: "0.5em",
+      },
+      "::-webkit-scrollbar-thumb:hover": {
+        backgroundColor: mode("#718096", "#718096")(props),
+      },
+    }),
+  },
 });
 
 export default theme;
