@@ -62,19 +62,30 @@ function Calculator() {
   }, []);
 
   useEffect(() => {
-    const prefersDarkMode = {
-      matches: false,
-      media: "(prefers-color-scheme: dark)",
-      onchange: null,
-      addListener: () => {},
-      removeListener: () => {},
-    };
-
     const handleChangeTheme = (event) => {
       setActiveStep(event.matches ? 1 : 2);
     };
 
-    handleChangeTheme(prefersDarkMode);
+    if (typeof window !== "undefined") {
+      const matchMediaMock = () => ({
+        matches: false,
+        media: "(prefers-color-scheme: dark)",
+        onchange: null,
+        addListener: jest.fn((callback) => callback({ matches: false })),
+        removeListener: jest.fn(),
+      });
+
+      const matchMediaFn = window.matchMedia || matchMediaMock;
+      const prefersDarkMode = matchMediaFn("(prefers-color-scheme: dark)");
+
+      handleChangeTheme(prefersDarkMode);
+
+      prefersDarkMode.addListener(handleChangeTheme);
+
+      return () => {
+        prefersDarkMode.removeListener(handleChangeTheme);
+      };
+    }
   }, []);
 
   const calculateScale = () => {
