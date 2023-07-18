@@ -19,6 +19,8 @@ function Calculator() {
   );
 
   const currentOperandRef = useRef(null);
+  const [initialTransform, setInitialTransform] = useState("");
+  const [isReset, setIsReset] = useState("");
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -89,7 +91,8 @@ function Calculator() {
   }, []);
 
   const calculateScale = () => {
-    if (currentOperandRef.current) {
+    if (currentOperandRef.current && !isReset) {
+      // Only calculate the scale when isReset is false
       const containerWidth = currentOperandRef.current.offsetWidth;
       const textWidth = currentOperandRef.current.scrollWidth;
       const scale = containerWidth / textWidth;
@@ -101,6 +104,29 @@ function Calculator() {
   const scale = calculateScale();
 
   const transformOrigin = scale === 1 ? "right" : "left";
+
+  const resetTransform = () => {
+    if (currentOperandRef.current) {
+      currentOperandRef.current.style.transform = "";
+    }
+  };
+
+  const resetCalculator = () => {
+    setIsReset(true); // Set isReset to true when RESET button is clicked
+    resetTransform();
+    setTimeout(() => {
+      setIsReset(false); // Set isReset to false after the transform reset
+      dispatch({ type: ACTIONS.CLEAR });
+    }, 0);
+  };
+
+  useEffect(() => {
+    if (currentOperandRef.current) {
+      const computedStyle = window.getComputedStyle(currentOperandRef.current);
+      const transformValue = computedStyle.getPropertyValue("transform");
+      setInitialTransform(transformValue);
+    }
+  }, [scale]);
 
   const [activeStep, setActiveStep] = useState(1);
 
@@ -216,7 +242,7 @@ function Calculator() {
               variant={`theme-${activeStep}`}
               gridColumnStart={1}
               gridColumnEnd={3}
-              onClick={() => dispatch({ type: ACTIONS.CLEAR })}
+              onClick={resetCalculator}
               sx={buttonStyles}
             >
               RESET
