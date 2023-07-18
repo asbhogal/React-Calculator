@@ -93,6 +93,7 @@ const theme = extendTheme({
         bg: mode("#000000", "#e6e6e6")(props),
       },
       "::-webkit-scrollbar": {
+        height: "0.1em",
         width: "0.1em",
         backgroundColor: "transparent",
       },
